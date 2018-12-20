@@ -1,7 +1,8 @@
 <?php
 require_once './base_classes.php';
 
-class Scientist extends Human {
+class Scientist extends Human implements IProfessional
+{
 
     private $invents =[];
 
@@ -27,10 +28,10 @@ class Scientist extends Human {
         //logic
     }
 
-    public function getFullName() {
-        $profession = self::PROFESSION;
-        return "{$profession} {$this -> name} {$this -> lastName}";
-    }
+//    public function getFullName() {
+//        $profession = self::PROFESSION;
+//        return "{$profession} {$this -> name} {$this -> lastName}";
+//    }
 
     public function getProfession()
     {
@@ -40,7 +41,8 @@ class Scientist extends Human {
     }
 }
 
-class Layer extends Human {
+class Layer extends Human implements IProfessional
+{
 
     private $contracts =[];
 
@@ -68,10 +70,10 @@ class Layer extends Human {
         //logic
     }
 
-    public function getFullName() {
-        $profession = self::PROFESSION;
-        return "{$profession} {$this -> name} {$this -> lastName}";
-    }
+//    public function getFullName() {
+//        $profession = self::PROFESSION;
+//        return "{$profession} {$this -> name} {$this -> lastName}";
+//    }
 
     public function getProfession()
     {

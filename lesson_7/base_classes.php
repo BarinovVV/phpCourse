@@ -38,7 +38,7 @@ abstract class Human {
         return $str;
     }
     
-    abstract public function getProfession();
+//    abstract public function getProfession();
 
     /**
      * Human constructor.
