@@ -72,10 +72,10 @@ class Nations {
 
 }
 
-$human1 = new Human('Валерий', 'Баринов', 175, 78);
-$human2 = new Human('Иван', 'Иванов', 177,77);
-$human3 = new Human('Петр', 'Петров', 150, 90);
-$human4 = new Human('Вася', 'Васечкин', 190, 95);
+$human1 = new Humans('Валерий', 'Баринов', 175, 78);
+$human2 = new Humans('Иван', 'Иванов', 177,77);
+$human3 = new Humans('Петр', 'Петров', 150, 90);
+$human4 = new Humans('Вася', 'Васечкин', 190, 95);
 
 $nation = new Nation();
 $nation -> add($human1);
