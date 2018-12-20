@@ -1,6 +1,6 @@
 <?php
 
-class Human {
+class Humans {
     private $height;
     private $weight;
     private $name;
@@ -31,7 +31,7 @@ class Human {
     }
 }//
 
-class Nation {
+class Nations {
     private $population = [];
 
     private static $allPopulation = 0;
