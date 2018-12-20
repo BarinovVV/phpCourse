@@ -1,5 +1,8 @@
 <?php
-abstract class Human {
+require_once 'intefaces.php';
+
+abstract class Human implements IHuman
+{
     private $height;
     private $weight;
     protected $name;
@@ -83,17 +86,17 @@ class Nation {
     }
 
 
-    public function add(Human $human) {
+    public function add(IProfessional $human) {
         $this -> population[spl_object_id($human)] = $human;
     }
-    public function remove(Human $human) {
+    public function remove(IProfessional $human) {
 //        $objectId = spl_object_id($human);
 
         if (array_key_exists(spl_object_id($human), $this -> population)) {
             unset ($this -> population[spl_object_id($human)]);
         }
     }
-    public function getFullInfo (Human $human) {
+    public function getFullInfo (IProfessional $human) {
         return "Полное имя: {$human -> getFullName()} Вес: {$human -> getWeight()} Рост: {$human -> getHeight()}" .  '<br>' . PHP_EOL;
     }
 
