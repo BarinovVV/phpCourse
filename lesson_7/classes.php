@@ -5,6 +5,9 @@ class Scientist extends Human {
 
     private $invents =[];
 
+    const WORK_TYPE = 'Технология';
+    const PROFESSION = 'Ученый';
+
     public function __construct($name, $lastName, $height, $weight, array $invents = [])
     {
         foreach ($invents as $invent) {
@@ -15,18 +18,36 @@ class Scientist extends Human {
         parent::__construct($name, $lastName, $height, $weight);
     }
 
+    public function listInvents()
+    {
+        echo parent::lineOutput($this->invents, self::WORK_TYPE);
+    }
+
     public function inventTechnology () {
         //logic
     }
 
     public function getFullName() {
-        return "Scientist {$this -> name} {$this -> lastName}";
+        $profession = self::PROFESSION;
+        return "{$profession} {$this -> name} {$this -> lastName}";
+    }
+
+    public function getProfession()
+    {
+        $profession = self::PROFESSION;
+        echo "{$profession} {$this->getFullName()}";
+
     }
 }
 
 class Layer extends Human {
 
     private $contracts =[];
+
+    const WORK_TYPE = 'Контракт';
+    const PROFESSION = 'Юрист';
+
+
 
     public function __construct($name, $lastName, $height, $weight, array $contracts = [])
     {
@@ -38,12 +59,25 @@ class Layer extends Human {
         parent::__construct($name, $lastName, $height, $weight);
     }
 
+    public function listContracts()
+    {
+        echo parent::lineOutput($this->contracts, self::WORK_TYPE);
+    }
+
     public function makeContract () {
         //logic
     }
 
     public function getFullName() {
-        return "Layer {$this -> name} {$this -> lastName}";
+        $profession = self::PROFESSION;
+        return "{$profession} {$this -> name} {$this -> lastName}";
+    }
+
+    public function getProfession()
+    {
+        $profession = self::PROFESSION;
+        echo "{$profession} {$this->getFullName()}";
+
     }
 }
 

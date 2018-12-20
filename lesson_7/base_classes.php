@@ -1,5 +1,5 @@
 <?php
-class Human {
+abstract class Human {
     private $height;
     private $weight;
     protected $name;
@@ -9,14 +9,44 @@ class Human {
         return $this->weight;
     }
 
+    /**
+     * @return mixed
+     */
     public function getHeight() {
         return $this->height;
     }
 
+    /**
+     * @return string
+     */
     public function getFullName() {
         return "{$this -> name} {$this -> lastName}";
     }
 
+
+    /**
+     * @param $properties
+     * @param $type
+     * @return string
+     */
+    protected function lineOutput($properties, $type)
+    {
+        $str = '';
+        foreach ($this -> $properties as $property) {
+            $str .= "{$type}: $property" . PHP_EOL;
+        }
+        return $str;
+    }
+    
+    abstract public function getProfession();
+
+    /**
+     * Human constructor.
+     * @param $name
+     * @param $lastName
+     * @param $height
+     * @param $weight
+     */
     public function __construct($name, $lastName, $height, $weight) {
         if (!is_string($name)) die('Неверное имя!');
         $this -> name = $name;
@@ -25,6 +55,7 @@ class Human {
         $this -> weight= $weight;
         Nation::increasePopulation();
     }
+
     public function __destruct() {
         Nation::decreasePopulation();
     }
@@ -32,9 +63,14 @@ class Human {
 }
 
 class Nation {
+
+    /**
+     * @var array
+     */
     private $population = [];
 
     private static $allPopulation = 0;
+
     public static function increasePopulation() {
         self::$allPopulation += 1;
     }
