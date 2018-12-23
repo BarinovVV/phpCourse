@@ -4,12 +4,13 @@ require_once 'interfaces.php';
 
 abstract class Goods implements IGood{
 
+
     protected $article;
     protected $name;
     protected $price;
     protected $weight;
-//    protected $category;
     protected $discount = 0;
+
 
     const VAT = 18;
 
@@ -19,7 +20,6 @@ abstract class Goods implements IGood{
         $this->name = $name;
         $this->price = $price;
         $this->weight = $weight;
-//        $this->category = $category;
     }
 
     public function getPrice()
@@ -40,11 +40,7 @@ abstract class Goods implements IGood{
 
     public function getFullName()
     {
-        // TODO: Implement getFullName() method.
+        return "$this->name Цена: $this->price Вес: $this->weight";
     }
 
-    public function getFullInfo()
-    {
-        // TODO: Implement getFullInfo() method.
-    }
 }

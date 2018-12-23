@@ -3,7 +3,9 @@ require_once 'base_classes.php';
 
 class Monitor extends Goods implements IMonitor {
 
-    const TYPE_MONITOR = 'Мониторы';
+    const GOOD_TYPE = 'Монитор';
+    const INCH_CENT = 2.54;
+
     private $diagonal;
     private $typeMatrix;
 
@@ -17,29 +19,53 @@ class Monitor extends Goods implements IMonitor {
     {
         $this->diagonal = $diagonal;
         $this->typeMatrix = $typeMatrix;
+
         parent::__construct($article, $name, $price, $weight);
     }
 
     public function getDiagonalInch()
     {
-        // TODO: Implement getDiagonalInch() method.
+        return $this->diagonal;
     }
 
     public function getDiagonalCent()
     {
-        // TODO: Implement getDiagonalCent() method.
+        return $this->diagonal * self::INCH_CENT;
     }
 
     public function getTypeMatrix()
     {
-        // TODO: Implement getTypeMatrix() method.
+        return $this->typeMatrix;
+    }
+
+    public function getFullName()
+    {
+        return self::GOOD_TYPE . ' ' . $this->name;
+    }
+
+    public function getFullInfo() {
+        $properties = [
+            "Артикул" => $this->article,
+            "Диагональ" => $this->diagonal,
+            "Тип матрицы" => $this->typeMatrix,
+            "Вес" => $this->weight,
+            "Цена" => $this->price
+        ];
+
+        echo $this->getFullName () . PHP_EOL;
+
+        foreach ($properties as $key => $property) {
+            echo "{$key} :  {$property}" . PHP_EOL;
+        }
+
+
     }
 
 }
 
 class Headset extends Goods implements IHeadset {
 
-    const TYPE_HEADSET = 'Наушники';
+    const GOOD_TYPE = 'Наушники';
 
     private $maxVolume;
     private $typeHeadset;
@@ -61,12 +87,35 @@ class Headset extends Goods implements IHeadset {
 
     public function getMaxVolume()
     {
-        // TODO: Implement getMaxVolume() method.
+        return $this->maxVolume;
     }
 
     public function getTypeHeadset()
     {
-        // TODO: Implement getTypeHeadset() method.
+       return $this->typeHeadset;
+    }
+
+    public function getFullName()
+    {
+        return self::GOOD_TYPE . ' ' . $this->name;
+    }
+
+    public function getFullInfo() {
+        $properties = [
+            "Артикул" => $this->article,
+            "Максимальная громкость" => $this->maxVolume,
+            "Тип наушников" => $this->typeHeadset,
+            "Вес" => $this->weight,
+            "Цена" => $this->price
+        ];
+
+        echo $this->getFullName () . PHP_EOL;
+
+        foreach ($properties as $key => $property) {
+            echo "{$key} :  {$property}" . PHP_EOL;
+        }
+
+
     }
 
 

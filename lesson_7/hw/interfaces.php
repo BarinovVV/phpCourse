@@ -5,13 +5,13 @@ interface IGood {
     public function getPriceExclVAT();
     public function setDiscount($discount);
     public function getFullName();
-    public function getFullInfo();
 }
 
 interface IMonitor {
     public function getDiagonalInch();
     public function getDiagonalCent();
     public function getTypeMatrix();
+    public function getFullInfo();
 }
 
 interface IHeadset {
