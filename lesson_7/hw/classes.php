@@ -1,6 +1,7 @@
 <?php
 require_once 'base_classes.php';
 
+
 class Monitor extends Goods implements IMonitor {
 
     const GOOD_TYPE = 'Монитор';
@@ -57,10 +58,7 @@ class Monitor extends Goods implements IMonitor {
         foreach ($properties as $key => $property) {
             echo "{$key} :  {$property}" . PHP_EOL;
         }
-
-
     }
-
 }
 
 class Headset extends Goods implements IHeadset {
@@ -114,9 +112,5 @@ class Headset extends Goods implements IHeadset {
         foreach ($properties as $key => $property) {
             echo "{$key} :  {$property}" . PHP_EOL;
         }
-
-
     }
-
-
 }

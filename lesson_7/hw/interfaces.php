@@ -17,4 +17,6 @@ interface IMonitor {
 interface IHeadset {
     public function getMaxVolume();
     public function getTypeHeadset();
+    public function getFullInfo();
+
 }
