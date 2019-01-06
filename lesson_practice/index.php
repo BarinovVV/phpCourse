@@ -3,7 +3,8 @@ require_once "./function/functions.php";
     $careerData = require_once ('./data/career_data.php');
     $profileData = require_once ('./data/profile_data.php');
     $educations = getSortedArray($profileData['education']);
-    $experiencies = getSortedArray($careerData['experience']);
+    $experiences = getSortedArray($careerData['experience']);
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -92,7 +93,7 @@ require_once "./function/functions.php";
 
         <section class="section experiences-section">
             <h2 class="section-title"><i class="fa fa-briefcase"></i>Опыт работы</h2>
-            <? foreach ($experiencies as $experience): ?>
+            <? foreach ($experiences as $experience): ?>
                 <div class="item">
                     <div class="meta">
                         <div class="upper-row">
@@ -136,8 +137,6 @@ require_once "./function/functions.php";
                             </div>
                         </div><!--//level-bar-->
                     </div><!--//item-->
-                <?=?>
-                </fn>
                 <? endforeach; ?>
 
             </div>

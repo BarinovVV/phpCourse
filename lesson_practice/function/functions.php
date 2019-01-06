@@ -5,9 +5,6 @@ function getSortedArray(array $array, $startKey = 'yearStart', $endKey = 'yearEn
 
     array_multisort($start, SORT_DESC, $end, SORT_DESC, $array);
     return $array;
-    function () {
-        
-    }
-    
-};
+
+}
 
