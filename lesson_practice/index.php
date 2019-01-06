@@ -1,9 +1,14 @@
 <?php
-require_once "./function/functions.php";
-    $careerData = require_once ('./data/career_data.php');
-    $profileData = require_once ('./data/profile_data.php');
-    $educations = getSortedArray($profileData['education']);
-    $experiences = getSortedArray($careerData['experience']);
+//require_once "./function/functions.php";
+//    $careerData = require_once ('./data/career_data.php');
+//    $profileData = require_once ('./data/profile_data.php');
+//    $educations = getSortedArray($profileData['education']);
+//    $experiences = getSortedArray($careerData['experience']);
+
+$connection = new PDO('mysql:host=localhost; dbname=academy; charset=utf8', 'root', '');
+$profile = $connection->query('SELECT * FROM profile')->fetchAll();
+$educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC');
+
 
 ?>
 <!DOCTYPE html>
@@ -38,17 +43,17 @@ require_once "./function/functions.php";
 <div class="wrapper">
     <div class="sidebar-wrapper">
         <div class="profile-container">
-            <img class="profile" src="<?= $profileData['about']['photo']?>" alt="" />
-            <h1 class="name"><?= $profileData['about']['name']?></h1>
-            <h3 class="tagline"><?= $profileData['about']['post']?></h3>
+            <img class="profile" src="<?= $profile[0]['photo']?>" alt="" />
+            <h1 class="name"><?= $profile[0]['name']?></h1>
+            <h3 class="tagline"><?= $profile[0]['post']?></h3>
         </div><!--//profile-container-->
 
         <div class="contact-container container-block">
             <ul class="list-unstyled contact-list">
-                <li class="email"><i class="fa fa-envelope"></i><a href="mailto: <?= $profileData['about']['email']?>"><?= $profileData['about']['email']?></a></li>
-                <li class="phone"><i class="fa fa-phone"></i><a href="tel: <?= $profileData['about']['email']?>"><?= $profileData['about']['phone']?></a></li>
-                <li class="website"><i class="fa fa-globe"></i><a href="//<?= $profileData['about']['site']?>" target="_blank"><?= $profileData['about']['site']?></a></li>
-                <li class="github"><i class="fa fa-github"></i><a href="<?= $profileData['about']['githublink']?>" target="_blank">github.com/<?= $profileData['about']['githubname']?></a></li>
+                <li class="email"><i class="fa fa-envelope"></i><a href="mailto: <?= $profile[0]['email']?>"><?= $profile[0]['email']?></a></li>
+                <li class="phone"><i class="fa fa-phone"></i><a href="tel: <?= $profile[0]['email']?>"><?= $profile[0]['phone']?></a></li>
+                <li class="website"><i class="fa fa-globe"></i><a href="//<?= $profile[0]['site']?>" target="_blank"><?= $profile[0]['site']?></a></li>
+                <li class="github"><i class="fa fa-github"></i><a href="<?= $profile[0]['githublink']?>" target="_blank">github.com/<?= $profile[0]['githubname']?></a></li>
             </ul>
         </div><!--//contact-container-->
         <div class="education-container container-block">
