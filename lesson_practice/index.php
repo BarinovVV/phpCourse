@@ -8,6 +8,11 @@
 $connection = new PDO('mysql:host=localhost; dbname=academy; charset=utf8', 'root', '');
 $profile = $connection->query('SELECT * FROM profile')->fetchAll();
 $educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC');
+$languages = $connection->query('SELECT * FROM languages');
+$interests = $connection->query('SELECT * FROM interests');
+$experiences = $connection->query('SELECT * FROM experience ORDER BY yearStart DESC');
+$projects = $connection->query('SELECT * FROM projects');
+$skills = $connection->query('SELECT * FROM skills');
 
 
 ?>
@@ -70,7 +75,7 @@ $educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC'
         <div class="languages-container container-block">
             <h2 class="container-block-title">Владение языками</h2>
             <ul class="list-unstyled interests-list">
-                <? foreach ($profileData['languages'] as $language) { ?>
+                <? foreach ($languages as $language) { ?>
                 <li><?=$language['title']?><span class="lang-desc">(<?=$language['level']?>)</span></li>
                 <? } ?>
             </ul>
@@ -79,8 +84,8 @@ $educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC'
         <div class="interests-container container-block">
             <h2 class="container-block-title">Интересы</h2>
             <ul class="list-unstyled interests-list">
-                <? foreach ($profileData['interests'] as $interest): ?>
-                    <li><?=$interest?></li>
+                <? foreach ($interests as $interest): ?>
+                    <li><?=$interest['title']?></li>
                 <? endforeach; ?>
             </ul>
         </div><!--//interests-->
@@ -92,7 +97,8 @@ $educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC'
         <section class="section summary-section">
             <h2 class="section-title"><i class="fa fa-user"></i>Обо мне</h2>
             <div class="summary">
-                <?= $careerData['about']?>
+                <p>Lorem ipsum dolor sit amet, consectetur . At autem blanditiis commodi cumque deserunt incidunt laudantium odio officia similique soluta? Ab assumenda autem eius expedita hic ipsa porro quam, quod reprehenderit sapiente suscipit tenetur. Autem commodi dicta doloribus facilis impedit labore minima odit quos ratione reiciendis, saepe suscipit ut, veniam?',
+                  'experience</p>
             </div><!--//summary-->
         </section><!--//section-->
 
@@ -123,7 +129,7 @@ $educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC'
                 <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.</p>
             </div><!--//intro-->
 
-            <? foreach ($careerData['projects'] as $project): ?>
+            <? foreach ($projects as $project): ?>
                 <div class="item">
                     <span class="project-title"><a href="//<?=$project['link']?>"><?=$project['title']?></a></span> - <span class="project-tagline"><?=$project['about']?></span>
                 </div><!--//item-->
@@ -132,9 +138,9 @@ $educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC'
         </section><!--//section-->
 
         <section class="skills-section section">
-            <h2 class="section-title"><i class="fa fa-rocket"></i>Профессионаьные навыки</h2>
+            <h2 class="section-title"><i class="fa fa-rocket"></i>Профессиональные навыки</h2>
             <div class="skillset">
-                <? foreach ($careerData['skills'] as $skill): ?>
+                <? foreach ($skills as $skill): ?>
                     <div class="item">
                         <h3 class="level-title"><?=$skill['title']?></h3>
                         <div class="level-bar">
@@ -146,6 +152,36 @@ $educations = $connection->query('SELECT * FROM education ORDER BY yearEnd DESC'
 
             </div>
         </section><!--//skills-section-->
+      <hr>
+      <p>Здесь вы можете оставить ваш комментарий:</p>
+
+      <form action="#" method="post">
+        <textarea name="comment" id="" cols="80" rows="5" placeholder="Оставить комментарий"></textarea>
+        <button>Отправить комментарий</button>
+      </form>
+
+      <h4>Ваши отзывы и комментарии:</h4>
+
+      <?php
+
+        if ($_POST['comment']) {
+        $comment = $_POST['comment'];
+        $connection->query("INSERT INTO `comments`(`title`) VALUES ('$comment')");
+
+        }
+
+      $comments = $connection->query('SELECT * FROM comments');
+      $count = 1;
+      foreach ($comments as $comment):
+      ?>
+
+
+      <div class="comments">
+          <span><?=$count?>: </span><?=$comment['title']?><br><hr>
+      </div>
+
+      <? $count++;
+      endforeach; ?>
 
     </div><!--//main-body-->
 </div>
