@@ -15,7 +15,6 @@ if ($_POST['login']) {
             $_SESSION['color'] = $_POST['color'];
             header('Location: content.php');
         }
-
     }
     echo "<p class='error'>Логин или пароль неверные</p><br>";
     echo "<p class='registration'><a href='registration.php'>Вы можете зарегистрироваться здесь</a></p><br>";
