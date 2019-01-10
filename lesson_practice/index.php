@@ -175,7 +175,6 @@ $skills = $connection->query('SELECT * FROM skills');
       foreach ($comments as $comment):
       ?>
 
-
       <div class="comments">
           <span><?=$count?>: </span><?=$comment['title']?><br><hr>
       </div>
