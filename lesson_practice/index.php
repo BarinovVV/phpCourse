@@ -1,9 +1,8 @@
 <?php
-//require_once "./function/functions.php";
-//    $careerData = require_once ('./data/career_data.php');
-//    $profileData = require_once ('./data/profile_data.php');
-//    $educations = getSortedArray($profileData['education']);
-//    $experiences = getSortedArray($careerData['experience']);
+if ($_POST['comment']) {
+    setcookie('comment', $_POST['comment'], time()+5);
+    header('Location: index.php');
+}
 
 $connection = new PDO('mysql:host=localhost; dbname=academy; charset=utf8', 'root', '');
 $profile = $connection->query('SELECT * FROM profile')->fetchAll();
@@ -155,7 +154,7 @@ $skills = $connection->query('SELECT * FROM skills');
       <hr>
       <p>Здесь вы можете оставить ваш комментарий:</p>
 
-      <form action="#" method="post">
+      <form action="#" method="POST">
         <textarea name="comment" id="" cols="80" rows="5" placeholder="Оставить комментарий"></textarea>
         <button>Отправить комментарий</button>
       </form>
