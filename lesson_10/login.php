@@ -18,8 +18,6 @@ if ($_POST['login']) {
 
     }
     echo "<p class='error'>Логин или пароль неверные</p><br>";
-//            header('Location: login.php');
-
     echo "<p class='registration'><a href='registration.php'>Вы можете зарегистрироваться здесь</a></p><br>";
 }
 
@@ -27,14 +25,15 @@ if ($_POST['login']) {
 
 <style>
     body {
-        padding: 10%;
+      display: flex;
+      flex-direction: column;
     }
     input, p, label, select {
         font-size: 25px;
         margin: 10px;
     }
     form {
-      text-align: ;
+      order: -1;
     }
     .send {
       width: 300px;
@@ -44,7 +43,7 @@ if ($_POST['login']) {
     .error {
       color: red;
     }
-    .registration a{
+    .registration {
       text-decoration: none;
     }
 </style>
