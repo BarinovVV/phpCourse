@@ -28,9 +28,11 @@ echo "<h1>Домашнее задание урок 11</h1>";
 
 <?
 if ($_POST['name']) {
-    $name = $_POST['name'];
-    $comment = $_POST['comment'];
-    $connection->query("INSERT INTO `comments`(`name`, `comment`, `date`) VALUES ('$name', '$comment', NOW())");
+    $name = htmlspecialchars($_POST['name']);
+    $comment = htmlspecialchars($_POST['comment']);
+    $safe = $connection->prepare("INSERT INTO `comments`(`name`, `comment`, `date`) VALUES (:name, :comment, NOW())");
+    $arr = ['name'=>$name, 'comment'=>$comment ];
+    $safe->execute($arr);
 
 
 

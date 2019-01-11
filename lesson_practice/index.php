@@ -164,8 +164,11 @@ $skills = $connection->query('SELECT * FROM skills');
       <?php
 
         if ($_POST['comment']) {
-        $comment = $_POST['comment'];
-        $connection->query("INSERT INTO `comments`(`title`) VALUES ('$comment')");
+        $comment = htmlspecialchars($_POST['comment']);
+        $safe = $connection->prepare("INSERT INTO `comments`(`title`) VALUES (:title)");
+        $arr = ['title'=>$comment];
+        $safe->execute($arr);
+
 
         }
 
